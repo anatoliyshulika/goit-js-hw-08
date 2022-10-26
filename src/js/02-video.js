@@ -1,12 +1,17 @@
 import "../styles/main.scss";
+const _ = require("lodash");
 
 const iframePlayerRef = document.querySelector("#vimeo-player");
 const player = new Vimeo.Player(iframePlayerRef);
 
-player.on("timeupdate", function (data) {
-  const { seconds } = data;
-  localStorage.setItem("playingTime", seconds);
-  console.log(seconds);
-});
+player.on(
+  "timeupdate",
+  _.throttle(function (data) {
+    const { seconds } = data;
+    localStorage.setItem("videoplayer-current-time", seconds);
+  }, 1000)
+);
 
-player.setCurrentTime(localStorage.getItem("playingTime"));
+window.addEventListener("load", () => {
+  player.setCurrentTime(localStorage.getItem("videoplayer-current-time"));
+});
