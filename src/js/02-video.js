@@ -1,4 +1,5 @@
 import "../styles/main.scss";
+// import Vimeo from "@vimeo/player";
 const _ = require("lodash");
 
 const iframePlayerRef = document.querySelector("#vimeo-player");
@@ -13,5 +14,7 @@ player.on(
 );
 
 window.addEventListener("load", () => {
-  player.setCurrentTime(localStorage.getItem("videoplayer-current-time"));
+  if (localStorage.getItem("videoplayer-current-time")) {
+    player.setCurrentTime(localStorage.getItem("videoplayer-current-time"));
+  }
 });
