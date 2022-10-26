@@ -39,6 +39,8 @@ window.addEventListener("load", () => {
     const { email, message } = JSON.parse(
       localStorage.getItem("feedback-form-state")
     );
+    feedbackFormState.email = email;
+    feedbackFormState.message = message;
     if (email !== "") {
       getElementRef('[name="email"]').value = email;
     }
