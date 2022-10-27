@@ -1,9 +1,9 @@
 import "../styles/main.scss";
-// import Vimeo from "@vimeo/player";
+import Vimeo from "@vimeo/player";
 const _ = require("lodash");
 
 const iframePlayerRef = document.querySelector("#vimeo-player");
-const player = new Vimeo.Player(iframePlayerRef);
+const player = new Vimeo(iframePlayerRef);
 
 player.on(
   "timeupdate",
